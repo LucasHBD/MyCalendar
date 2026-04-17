@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import Home from './pages/home'
 import Cadastro from './pages/cadastro/cadastro'
+import Albuns from './pages/albuns/albuns'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
 const router = createBrowserRouter([
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastro",
     element: <Cadastro />
+  },
+  {
+    path: "/albuns",
+    element: <Albuns />
   }
 ]);
 
