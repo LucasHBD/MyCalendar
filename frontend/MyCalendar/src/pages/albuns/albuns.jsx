@@ -2,13 +2,25 @@ import "./albuns.css";
 import { Link } from "react-router-dom";
 import imgbg from "../../assets/falling-leaves.png"
 import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 function Albuns() {
 
     const [albuns, setAlbuns] = useState([]);
     const [novoAlbum, setNovoAlbum] = useState("");
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [usuario, setUsuario] = useState("");
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token){
+            try {
+                const decoded = jwtDecode(token);
+                setUsuario(decoded.sub);
+            } catch (error) {
+                console.error("Error decoding token:", error);
+            }
+        }
         fetch("http://localhost:8081/api/albuns")
             .then(res => res.json())
             .then(data => setAlbuns(data))
@@ -41,6 +53,11 @@ function Albuns() {
         .catch(err => console.error(err));
     };
 
+    const logout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    }
+
     return (
         <>
             <header>
@@ -49,7 +66,16 @@ function Albuns() {
                 </div>
                 <nav>
                     <Link to="/albuns">Albuns</Link>
-                    <Link to="/configuracoes">LucasHBD</Link>
+                    <div className="user-menu">
+                        <span onClick={() => setMenuOpen(!menuOpen)}>
+                            {usuario || "Usuário"}
+                        </span>
+                        {menuOpen && (
+                            <div className="dropdown">
+                                <button onClick={logout}>Sair</button>
+                            </div>
+                        )}
+                    </div>
                 </nav>
             </header>
             <main>
