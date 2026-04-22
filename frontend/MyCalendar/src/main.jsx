@@ -6,6 +6,7 @@ import Cadastro from './pages/cadastro/cadastro'
 import Albuns from './pages/albuns/albuns'
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
+
 const router = createBrowserRouter([
   {
     path: "/",

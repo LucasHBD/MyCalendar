@@ -1,16 +1,15 @@
 package com.example.meu_primeiro_springboot.model;
 
-import jakarta.persistence.Transient;
 import java.time.LocalDateTime;
 
-import org.springframework.web.multipart.MultipartFile;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +26,12 @@ public class Memoria {
     private String caminhoImagem;
 
     private LocalDateTime dataCriacao = LocalDateTime.now();
+
+    @ManyToOne
+    @JoinColumn(name = "album_id")
+    @JsonIgnore
+    private Album album;
+
 
 
     public Memoria(){

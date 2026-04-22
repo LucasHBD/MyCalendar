@@ -2,55 +2,72 @@ header {
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #ccc;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
 }
 
 nav a {
-    margin-left: 20px;
-    transition: 0.3s;
-    color: black;
     text-decoration: none;
+    color: black;
 }
 
-img {
-    width: 256px;
-    height: 256px;
-}
-
-main p {
-    color: #9C9C9C;
-}
-
-.null {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 250px;
-}
-
-.nulltext {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(autofill, 200px);
-    gap: 20px;
+main {
     padding: 20px;
 }
 
-.card {
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 10px;
+/* criar album */
+.create {
+    margin-bottom: 20px;
 }
 
-.card img{
+.create input {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.create button {
+    padding: 8px 15px;
+}
+
+/* vazio */
+.empty {
+    text-align: center;
+    margin-top: 50px;
+    color: #9C9C9C;
+}
+
+.empty img {
+    width: 200px;
+}
+
+/* grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 20px;
+}
+
+/* card */
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.card img {
     width: 100%;
     height: 150px;
     object-fit: cover;
+}
+
+.no-image {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
 }
